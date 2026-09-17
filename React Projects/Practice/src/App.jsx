@@ -6,41 +6,26 @@ import Rendering from "./Rendering";
 import UserDetails from "./UserDetails";
 
 const App = () => {
-  const [message, setMessage] = useState("");
 
-  const products = [
-    {
-      id: 1,
-      name: "Laptop",
-      price: 50000,
-      category: "Electronics",
-      inStock: true,
-    },
-    {
-      id: 2,
-      name: "Shoes",
-      price: 3000,
-      category: "Fashion",
-      inStock: false,
-    },
-    {
-      id: 3,
-      name: "Headphones",
-      price: 2000,
-      category: "Electronics",
-      inStock: true,
-    },
-  ];
-  function onBuy(message) {
-    setMessage(message);
-  }
+  const [count, setCount] = useState(7)
+
+   function increaseCount(){
+      setCount(count + 1);
+   }
+
+   function decreaseCount(){
+      setCount(count-1);
+   }
 
 
   return (
     <>
-      {products.map((product) => (
-        <NewProduct key={product.id} product={product} onSend={onBuy} />
-      ))}{message}
+      <h1>Count: {count}</h1>
+      <button onClick={increaseCount}>Increase Count</button> 
+      <br />
+      <br />
+      <button onClick={decreaseCount}>Decrease Count</button>
+      
     </>
   );
 };

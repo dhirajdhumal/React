@@ -5,6 +5,8 @@ import StudentCard from './StudentCard';
 import StudentDetails from './StudentDetails';
 import Card from './Card';
 import ComponentA from './ComponentA';
+import InputValue from './InputValue';
+import ChnageColor from './ChnageColor';
 
 const App = () => {
   const students = [
@@ -109,8 +111,7 @@ const student = {
   
   return (
     <>
-
-        <div className='d-flex flex-wrap justify-content-between gap-3'>
+        {/* <div className='d-flex flex-wrap justify-content-between gap-3'>
               {
                 students.map((s)=>(
                   <StudentCard id={s.id} name={s.name} age={s.age} city={s.city} email={s.email} course={s.course} image={s.img}  />
@@ -131,7 +132,9 @@ const student = {
           <p>Age: 17</p>
         </Card>
 
-        <ComponentA name="Dhiraj Dhumal" />
+        <ComponentA name="Dhiraj Dhumal" /> */}
+
+      <ChnageColor />
     </>
   )
 }
