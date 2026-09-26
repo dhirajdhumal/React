@@ -3,11 +3,12 @@ import FetchData from './FetchData'
 import UseEffectRendering from './UseEffectRendering'
 import GetData from './GetData'
 import Githubusers from './GithubUsers'
+import Effect from './Effect'
 
 const App = () => {
   return (
     <>
-      <Githubusers />
+      <Effect />
     </>
   )
 }
