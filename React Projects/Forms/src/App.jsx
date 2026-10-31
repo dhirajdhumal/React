@@ -1,12 +1,18 @@
 import React from 'react'
-import ViewFormData from './ViewFormData'
-import UseRef from './UseRef'
 
 const App = () => {
+
+  let value;
+  function getInput(e){
+    value = e.target.value
+  }
+
   return (
-    <div>
-      <UseRef />
-    </div>
+    <>
+      <input type="text"  onChange={getInput}/>
+
+      <p>{value}</p>
+    </>
   )
 }
 
