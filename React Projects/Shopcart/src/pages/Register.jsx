@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 const Register = () => {
-  const { register, handleSubmit, formState: {errors} } = useForm();
+  const { register, handleSubmit, getValues, formState: {errors} } = useForm();
   const [info, setInfo] = useState();
 
   const getData = (data)=>{
@@ -72,11 +72,7 @@ const Register = () => {
               <input type="text" id="" className='form-control' placeholder='Re-enter your password'
                 {...register("cPassword",{
                   required: "Confirm Password is required",
-                  pattern: {
-                    value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/,
-                    message:
-                      "Password must contain uppercase, lowercase, a number, a special character, and at least 8 characters to 16 characters"
-                  }
+                  validate: (value) => value === getValues("password") || "Passwords do not match"
                 })}
               />
               <p className='text-danger mb-3'>{errors.cPassword && errors.cPassword.message}</p>
