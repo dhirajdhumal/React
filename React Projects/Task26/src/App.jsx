@@ -20,6 +20,11 @@ import ChangeColor from "./hooks/useState/ChangeColor";
 import LikeCount from "./hooks/useState/LikeCount";
 import DisplayName from "./hooks/useState/DisplayName";
 import Counter from "./hooks/useState/Counter";
+import UncontrolledForm from "./hooks/useRef/UncontrolledForm";
+import Arrays from "./hooks/useState/Arrays";
+import Objects from "./hooks/useState/Objects";
+import Task from "./hooks/useState/Task";
+import GetData from "./hooks/useForm/GetData";
 
 const App = () => {
   const doctors = [
@@ -139,6 +144,12 @@ const App = () => {
 
       <h1 style={{color: "red"}}>useState Hook</h1>
       <hr />
+      <Arrays />
+
+      <hr />
+      <Objects />
+
+      <hr />
       <VolumeController />
       <hr />
 
@@ -194,7 +205,20 @@ const App = () => {
       <hr />
 
       <OnlineDelivery />
+       <hr />
 
+      <h1 style={{color: "red"}}>Controlled Form</h1>
+      <hr />
+      <UncontrolledForm />
+      <hr />
+
+      <Task />
+      <hr />
+
+      <h1 style={{color: "red"}}>useForm Hook</h1>
+      <hr />
+      <GetData />
+      <hr />
 
     </>
   );
