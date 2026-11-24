@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import {registerUser} from '../services/authService'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
   const { register, handleSubmit, getValues, formState: {errors} } = useForm();
   const [info, setInfo] = useState();
+  const navigate = useNavigate();
 
-  const getData = (data)=>{
-    console.log(data.fullName);
-    setInfo(data);
+  const getData = async (data)=>{
+    try {
+      const userData = await registerUser(data);
+      navigate("/login");
+    } catch (error) {
+      setInfo(error.response.data.message || "An error occurred during registration.");
+      console.error("Error registering user:", error);
+    }
   }
 
 
@@ -19,13 +27,14 @@ const Register = () => {
           <div className='d-flex flex-column justify-content-center align-items-center bg-light rounded'>
             <img src="/images/Logo.png" alt="" height={"50px"}/>
             <h3 className='fw-bold m-0'>Create Your Account</h3>
+            <h5 style={{color: "#ff3300"}}>{info}</h5>
             <p className='text-muted'>Register to cart ordering with shopcart</p>
           </div>
           <div>
             <form onSubmit={handleSubmit(getData)}>
               <label htmlFor="" className='form-label fw-bold'>Full Name</label>
               <input type="text" id="" className='form-control' placeholder='Enter your full name' 
-                {...register("fullName",{
+                {...register("name",{
                   required: "Full name is required"
                 })}
               />  
@@ -83,12 +92,7 @@ const Register = () => {
             </form>
           </div>
         </div>
-        <div className='col-lg-4'>
-          <p>{info && info.fullName}</p>
-          <p>{info && info.username}</p>
-          <p>{info && info.email}</p>
-          <p>{info && info.password}</p>
-        </div>
+        
       </div>
     </div>
   )
